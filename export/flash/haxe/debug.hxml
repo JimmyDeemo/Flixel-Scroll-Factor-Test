@@ -3,7 +3,7 @@
 -lib flixel-dev
 -lib flixel-addons-jimmydeemo
 -cp source
--cp C:\HaxeToolkit\haxe/lib\openfl/1,0,4/
+-cp C:\HaxeToolkit\haxe\lib/openfl/1,0,4/
 -D tools=1
 -D openfl_ver=1.0.4
 -D openfl

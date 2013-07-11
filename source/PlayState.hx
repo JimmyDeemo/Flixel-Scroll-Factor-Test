@@ -1,5 +1,7 @@
 package ;
 
+import flixel.addons.display.FlxExtendedSprite;
+import flixel.addons.plugin.FlxMouseControl;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -7,12 +9,21 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxPoint;
 
 /**
  * A FlxState which can be used for the actual gameplay.
  */
 class PlayState extends FlxState
 {
+	var scrollSpriteZeroZero:FlxExtendedSprite = null;
+	var scrollSpriteZeroOne:FlxExtendedSprite = null;
+	var scrollSpriteOneOne:FlxExtendedSprite = null;
+	var scrollSpriteOneZero:FlxExtendedSprite = null;
+	var scrollSpritePoint5Point5:FlxExtendedSprite = null;
+	var scrollSpritePoint3Point3:FlxExtendedSprite = null;
+	var scrollSpritePoint7Point7:FlxExtendedSprite = null;
+	
 	/**
 	 * Function that is called up when to state is created to set it up.
 	 */
@@ -25,9 +36,53 @@ class PlayState extends FlxState
 		FlxG.mouse.show();
 		#end
 		
+		FlxG.plugins.add( new FlxMouseControl() );
+		
 		var background:FlxSprite = new FlxSprite(0, 0, "assets/back.png");
 		
 		add(background);
+		
+		scrollSpriteZeroZero = new FlxExtendedSprite(540, 380);
+		scrollSpriteZeroZero.makeGraphic( 50, 50, 0xFFFF0000 );
+		scrollSpriteZeroZero.scrollFactor = new FlxPoint(0, 0);
+		scrollSpriteZeroZero.enableMouseDrag();
+		add(scrollSpriteZeroZero);
+		
+		scrollSpriteZeroOne = new FlxExtendedSprite(540, 380);
+		scrollSpriteZeroOne.makeGraphic( 50, 50, 0xFFFF4444 );
+		scrollSpriteZeroOne.scrollFactor = new FlxPoint(0, 1);
+		scrollSpriteZeroOne.enableMouseDrag();
+		add(scrollSpriteZeroOne);
+		
+		scrollSpriteOneOne = new FlxExtendedSprite(540, 380);
+		scrollSpriteOneOne.makeGraphic( 50, 50, 0xFF00FF00 );
+		scrollSpriteOneOne.scrollFactor = new FlxPoint(1, 1);
+		scrollSpriteOneOne.enableMouseDrag();
+		add(scrollSpriteOneOne);
+		
+		scrollSpriteOneZero = new FlxExtendedSprite(540, 380);
+		scrollSpriteOneZero.makeGraphic( 50, 50, 0xFF44FF44 );
+		scrollSpriteOneZero.scrollFactor = new FlxPoint(1, 0);
+		scrollSpriteOneZero.enableMouseDrag();
+		add(scrollSpriteOneZero);
+		
+		scrollSpritePoint5Point5 = new FlxExtendedSprite(540, 380);
+		scrollSpritePoint5Point5.makeGraphic( 50, 50, 0xFFFFFF00 );
+		scrollSpritePoint5Point5.scrollFactor = new FlxPoint(0.5, 0.5);
+		scrollSpritePoint5Point5.enableMouseDrag();
+		add(scrollSpritePoint5Point5);
+		
+		scrollSpritePoint3Point3 = new FlxExtendedSprite(540, 380);
+		scrollSpritePoint3Point3.makeGraphic( 50, 50, 0xFFFFFF44 );
+		scrollSpritePoint3Point3.scrollFactor = new FlxPoint(0.3, 0.3);
+		scrollSpritePoint3Point3.enableMouseDrag();
+		add(scrollSpritePoint3Point3);
+		
+		scrollSpritePoint7Point7 = new FlxExtendedSprite(540, 380);
+		scrollSpritePoint7Point7.makeGraphic( 50, 50, 0xFFFFFF99 );
+		scrollSpritePoint7Point7.scrollFactor = new FlxPoint(0.7, 0.7);
+		scrollSpritePoint7Point7.enableMouseDrag();
+		add(scrollSpritePoint7Point7);
 		
 		FlxG.camera.style = FlxCamera.STYLE_NO_DEAD_ZONE;
 		FlxG.camera.setBounds(0, 0, background.width, background.height);
