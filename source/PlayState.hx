@@ -109,22 +109,22 @@ class PlayState extends FlxState
 		
 		if (FlxG.keys.UP)
 		{
-			FlxG.camera.scroll.y -= 10;
+			FlxG.camera.scroll.y -= 5;
 		}
 		
 		if (FlxG.keys.DOWN)
 		{
-			FlxG.camera.scroll.y += 10;
+			FlxG.camera.scroll.y += 5;
 		}
 		
 		if (FlxG.keys.LEFT)
 		{
-			FlxG.camera.scroll.x -= 10;
+			FlxG.camera.scroll.x -= 5;
 		}
 		
 		if (FlxG.keys.RIGHT)
 		{
-			FlxG.camera.scroll.x += 10;
+			FlxG.camera.scroll.x += 5;
 		}
 	}
 }
