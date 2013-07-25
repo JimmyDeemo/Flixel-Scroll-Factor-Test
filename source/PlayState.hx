@@ -6,6 +6,7 @@ import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.group.FlxGroup;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
@@ -16,6 +17,10 @@ import flixel.util.FlxPoint;
  */
 class PlayState extends FlxState
 {
+	var groupZeroZero:FlxGroup = null;
+	
+	var textZeroZero:FlxText = null;
+	
 	var scrollSpriteZeroZero:FlxExtendedSprite = null;
 	var scrollSpriteZeroOne:FlxExtendedSprite = null;
 	var scrollSpriteOneOne:FlxExtendedSprite = null;
@@ -42,11 +47,16 @@ class PlayState extends FlxState
 		
 		add(background);
 		
+		groupZeroZero = new FlxGroup();
 		scrollSpriteZeroZero = new FlxExtendedSprite(540, 380);
 		scrollSpriteZeroZero.makeGraphic( 50, 50, 0xFFFF0000 );
 		scrollSpriteZeroZero.scrollFactor = new FlxPoint(0, 0);
 		scrollSpriteZeroZero.enableMouseDrag();
-		add(scrollSpriteZeroZero);
+		textZeroZero = new FlxText(scrollSpriteZeroZero.x, scrollSpriteZeroZero.y, 50, "0", 12, true, true);
+		textZeroZero.scrollFactor = new FlxPoint(0, 0);
+		groupZeroZero.add(scrollSpriteZeroZero);
+		groupZeroZero.add(textZeroZero);
+		add(groupZeroZero);
 		
 		scrollSpriteZeroOne = new FlxExtendedSprite(540, 380);
 		scrollSpriteZeroOne.makeGraphic( 50, 50, 0xFFFF4444 );
@@ -106,25 +116,27 @@ class PlayState extends FlxState
 	{
 		super.update();
 		
+		textZeroZero.x = scrollSpriteZeroZero.x;
+		textZeroZero.y = scrollSpriteZeroZero.y;
 		
 		if (FlxG.keys.UP)
 		{
-			FlxG.camera.scroll.y -= 10;
+			FlxG.camera.scroll.y -= 5;
 		}
 		
 		if (FlxG.keys.DOWN)
 		{
-			FlxG.camera.scroll.y += 10;
+			FlxG.camera.scroll.y += 5;
 		}
 		
 		if (FlxG.keys.LEFT)
 		{
-			FlxG.camera.scroll.x -= 10;
+			FlxG.camera.scroll.x -= 5;
 		}
 		
 		if (FlxG.keys.RIGHT)
 		{
-			FlxG.camera.scroll.x += 10;
+			FlxG.camera.scroll.x += 5;
 		}
 	}
 }
