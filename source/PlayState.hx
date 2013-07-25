@@ -17,14 +17,6 @@ import flixel.util.FlxPoint;
  */
 class PlayState extends FlxState
 {
-	var debugTextCurrentSelection:FlxText = null;
-	var debugTextXY:FlxText = null;
-	var debugTextScrollFactor:FlxText = null;
-	var debugTextDragXY:FlxText = null;
-	var debugTextMouseXY:FlxText = null;
-	var debugTextMouseScreenXY:FlxText = null;
-	var debugTextMouseCameraScrollXY:FlxText = null;
-	
 	var groupZeroZero:FlxGroup = null;
 	
 	var textZeroZero:FlxText = null;
@@ -59,7 +51,7 @@ class PlayState extends FlxState
 		scrollSpriteZeroZero = new FlxExtendedSprite(540, 380);
 		scrollSpriteZeroZero.makeGraphic( 50, 50, 0xFFFF0000 );
 		scrollSpriteZeroZero.scrollFactor = new FlxPoint(0, 0);
-		scrollSpriteZeroZero.enableMouseDrag(true);
+		scrollSpriteZeroZero.enableMouseDrag();
 		textZeroZero = new FlxText(scrollSpriteZeroZero.x, scrollSpriteZeroZero.y, 50, "0", 12, true, true);
 		textZeroZero.scrollFactor = new FlxPoint(0, 0);
 		groupZeroZero.add(scrollSpriteZeroZero);
@@ -75,7 +67,7 @@ class PlayState extends FlxState
 		scrollSpriteOneOne = new FlxExtendedSprite(540, 380);
 		scrollSpriteOneOne.makeGraphic( 50, 50, 0xFF00FF00 );
 		scrollSpriteOneOne.scrollFactor = new FlxPoint(1, 1);
-		scrollSpriteOneOne.enableMouseDrag(true);
+		scrollSpriteOneOne.enableMouseDrag();
 		add(scrollSpriteOneOne);
 		
 		scrollSpriteOneZero = new FlxExtendedSprite(540, 380);
@@ -102,28 +94,6 @@ class PlayState extends FlxState
 		scrollSpritePoint7Point7.enableMouseDrag();
 		add(scrollSpritePoint7Point7);
 		
-		debugTextCurrentSelection = new FlxText(0, 0, 300, "debugTextCurrentSelection", 12);
-		debugTextCurrentSelection.scrollFactor = new FlxPoint();
-		add(debugTextCurrentSelection);
-		debugTextXY = new FlxText(0, 20, 300, "debugTextXY", 12);
-		debugTextXY.scrollFactor = new FlxPoint();
-		add(debugTextXY);
-		debugTextScrollFactor = new FlxText(0, 40, 300, "debugTextScrollFactor", 12);
-		debugTextScrollFactor.scrollFactor = new FlxPoint();
-		add(debugTextScrollFactor);
-		debugTextDragXY = new FlxText(0, 60, 300, "debugTextDragXY", 12);
-		debugTextDragXY.scrollFactor = new FlxPoint();
-		add(debugTextDragXY);
-		debugTextMouseXY = new FlxText(0, 80, 300, "debugTextMouseXY", 12);
-		debugTextMouseXY.scrollFactor = new FlxPoint();
-		add(debugTextMouseXY);
-		debugTextMouseScreenXY = new FlxText(0, 100, 300, "debugTextMouseScreenXY", 12);
-		debugTextMouseScreenXY.scrollFactor = new FlxPoint();
-		add(debugTextMouseScreenXY);
-		debugTextMouseCameraScrollXY = new FlxText(0, 120, 300, "debugTextMouseCameraScrollXY", 12);
-		debugTextMouseCameraScrollXY.scrollFactor = new FlxPoint();
-		add(debugTextMouseCameraScrollXY);
-		
 		FlxG.camera.style = FlxCamera.STYLE_NO_DEAD_ZONE;
 		FlxG.camera.setBounds(0, 0, background.width, background.height);
 		
@@ -145,14 +115,6 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 		super.update();
-		
-		debugTextCurrentSelection.text = "Current Selection: 0";
-		debugTextXY.text = "Position: " + scrollSpriteZeroZero.x + "," + scrollSpriteZeroZero.y;
-		debugTextScrollFactor.text = "Scroll Factor: " + scrollSpriteZeroZero.scrollFactor.x + "," + scrollSpriteZeroZero.scrollFactor.y;
-		debugTextDragXY.text = "Drag: " + scrollSpriteZeroZero._dragOffsetX + "," + scrollSpriteZeroZero._dragOffsetY;
-		debugTextMouseCameraScrollXY.text = "Mouse Camera Scroll: " + FlxG.camera.scroll.x + "," + FlxG.camera.scroll.y;
-		debugTextMouseScreenXY.text = "Mouse Screen: " + FlxG.mouse.screenX + "," + FlxG.mouse.screenY;
-		debugTextMouseXY.text = "Mouse: " + FlxG.mouse.x + "," + FlxG.mouse.y;
 		
 		textZeroZero.x = scrollSpriteZeroZero.x;
 		textZeroZero.y = scrollSpriteZeroZero.y;
