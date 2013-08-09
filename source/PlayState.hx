@@ -7,6 +7,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
+import flixel.system.input.keyboard.FlxKeyList;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
@@ -119,22 +120,22 @@ class PlayState extends FlxState
 		textZeroZero.x = scrollSpriteZeroZero.x;
 		textZeroZero.y = scrollSpriteZeroZero.y;
 		
-		if (FlxG.keys.UP)
+		if (FlxG.keys.pressed.UP)
 		{
 			FlxG.camera.scroll.y -= 5;
 		}
 		
-		if (FlxG.keys.DOWN)
+		if (FlxG.keys.pressed.DOWN)
 		{
 			FlxG.camera.scroll.y += 5;
 		}
 		
-		if (FlxG.keys.LEFT)
+		if (FlxG.keys.pressed.LEFT)
 		{
 			FlxG.camera.scroll.x -= 5;
 		}
 		
-		if (FlxG.keys.RIGHT)
+		if (FlxG.keys.pressed.RIGHT)
 		{
 			FlxG.camera.scroll.x += 5;
 		}
